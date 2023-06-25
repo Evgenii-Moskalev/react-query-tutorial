@@ -1,9 +1,11 @@
-import { useQuery } from "react-query"
-import axios from "axios"
+// import { useQuery } from "react-query"
+// import axios from "axios"
 
-const fetchSuperHeroes = () => {
-    return axios.get('http://localhost:4000/superheroes')
-}
+// const fetchSuperHeroes = () => {
+//     return axios.get('http://localhost:4000/superheroes')
+// }
+
+import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
 
 export const RQSuperHeroesPage = () => {
 
@@ -15,40 +17,41 @@ export const RQSuperHeroesPage = () => {
         console.log('Perform side effect after encountering error', error);
     }
 
-    const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
-        'super-heroes',
-        fetchSuperHeroes,
-        {
-            // cacheTime: 5000
-            // staleTime: 30000
+    const { isLoading, data, isError, error, isFetching, refetch } = useSuperHeroesData(onSuccess, onError);
+    // = useQuery(
+    //     'super-heroes',
+    //     fetchSuperHeroes,
+    //     {
+    //         // cacheTime: 5000
+    //         // staleTime: 30000
 
-            // refetchOnMount: true,
-            // refetchOnMount: false
-            // refetchOnMount: 'always'
+    //         // refetchOnMount: true,
+    //         // refetchOnMount: false
+    //         // refetchOnMount: 'always'
 
-            // refetchOnWindowFocus: true,
-            // refetchOnWindowFocus: false
-            // refetchOnWindowFocus: 'always'
+    //         // refetchOnWindowFocus: true,
+    //         // refetchOnWindowFocus: false
+    //         // refetchOnWindowFocus: 'always'
 
-            // refetchInterval: false
-            // refetchInterval: 2000,
-            // refetchIntervalInBackground: true
+    //         // refetchInterval: false
+    //         // refetchInterval: 2000,
+    //         // refetchIntervalInBackground: true
 
-            // enabled: false,
+    //         // enabled: false,
 
-            // onSuccess: onSuccess,
-            onSuccess,
-            // onError: onError
-            onError,
+    //         // onSuccess: onSuccess,
+    //         onSuccess,
+    //         // onError: onError
+    //         onError,
 
-            select: (data) => {
-                const superHeroNames = data.data.map(hero => hero.name);
-                return superHeroNames;
-            }
-        }
-    )
+    //         select: (data) => {
+    //             const superHeroNames = data.data.map(hero => hero.name);
+    //             return superHeroNames;
+    //         }
+    //     }
+    // )
 
-    console.log({ isLoading, isFetching });
+    // console.log({ isLoading, isFetching });
 
     if (isLoading || isFetching) {
         return (<h2>Loading...</h2>)
