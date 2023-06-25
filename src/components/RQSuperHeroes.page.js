@@ -11,8 +11,8 @@ export const RQSuperHeroesPage = () => {
         fetchSuperHeroes,
         {
             // refetchInterval: false
-            // refetchInterval: 2000,
-            // refetchIntervalInBackground: true
+            refetchInterval: 2000,
+            refetchIntervalInBackground: true
         }
     )
 
