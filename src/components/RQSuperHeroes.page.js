@@ -58,7 +58,7 @@ export const RQSuperHeroesPage = () => {
 
     // console.log({ isLoading, isFetching });
 
-    const { mutate: addHero } = useAddSuperHeroData()
+    const { mutate: addHero, isLoading: isLoadingAddHero, isError: isErrorAddHero, error: errorAddHero } = useAddSuperHeroData()
 
     const handleAddHeroClick = () => {
         // console.log({ name, alterEgo });
@@ -66,12 +66,15 @@ export const RQSuperHeroesPage = () => {
         addHero(hero);
     }
 
-    if (isLoading || isFetching) {
+    if (isLoading || isFetching || isLoadingAddHero) {
         return (<h2>Loading...</h2>)
     }
 
     if (isError) {
         return <h2>{error.message}</h2>
+    }
+    if (isErrorAddHero) {
+        return <h2>{errorAddHero.message}</h2>
     }
 
     return (<>
