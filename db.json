@@ -19,6 +19,16 @@
       "name": "Shazam",
       "alterEgo": "Billy Batson",
       "id": 4
+    },
+    {
+      "name": "Aquaman",
+      "alterEgo": "Arthur Curry",
+      "id": 5
+    },
+    {
+      "name": "Aquaman 2",
+      "alterEgo": "Arthur Curry 2",
+      "id": 6
     }
   ],
   "friends": [
